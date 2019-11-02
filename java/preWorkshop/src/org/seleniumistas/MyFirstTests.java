@@ -1,6 +1,5 @@
 package org.seleniumistas;
 
-import java.nio.file.Paths;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,25 +10,21 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class MyFirstTests {
+
   private static final String SITE_URL = "http://the-internet.herokuapp.com/login";
   private static final String USERNAME_INPUT_ID = "username";
   private static final String PASSWORD_INPUT_ID = "password";
-  private static final String LOGIN_BUTTON_CSS = "button.radius";
+  private static final String LOGIN_BUTTON_CSS = "button[type='submit']";
   private static final String FLASH_MSG_TEXT_ID = "flash";
 
   private WebDriver driver;
 
   @BeforeTest
   public void setUp() {
-    // Assumes chromedriver is saved in <user_home>/drivers
-    String chromeDriver =
-        System.getProperty("os.name").equalsIgnoreCase("Win") ? "chromedriver.exe" : "chromedriver";
-    String chromeDriverPath =
-        Paths.get(System.getProperty("user.home"), "drivers", chromeDriver).toString();
-
-    // Optional, if not specified, WebDriver will search your path for chromedriver.
-    System.setProperty("webdriver.chrome.driver", chromeDriverPath);
     driver = new ChromeDriver();
+    // To work with other browsers:
+    // driver = new SafariDriver();
+    // driver = new FirefoxDriver();
   }
 
   @Test(description = "Verify when login is successful, Logout button is displayed.")
