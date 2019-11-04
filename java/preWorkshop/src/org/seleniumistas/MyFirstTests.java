@@ -27,7 +27,7 @@ public class MyFirstTests {
     // driver = new FirefoxDriver();
   }
 
-  @Test(description = "Verify when login is successful, Logout button is displayed.")
+  @Test(description = "Verify when login is successful \"You logged into a secure area!\" is displayed.")
   public void verifyLoginTest() {
     String username = "tomsmith";
     String password = "SuperSecretPassword!";
